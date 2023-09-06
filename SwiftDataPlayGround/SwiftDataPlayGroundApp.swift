@@ -13,8 +13,8 @@ struct SwiftDataPlayGroundApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FolderListView()
         }
-        .modelContainer(for: Item.self)
+        .modelContainer(for: Folder.self)
     }
 }
