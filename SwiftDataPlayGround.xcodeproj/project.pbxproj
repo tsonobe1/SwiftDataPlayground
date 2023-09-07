@@ -16,6 +16,7 @@
 		0C4BA6D72AA775B900099C7F /* SwiftDataPlayGroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BA6D62AA775B900099C7F /* SwiftDataPlayGroundUITests.swift */; };
 		0C4BA6D92AA775B900099C7F /* SwiftDataPlayGroundUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BA6D82AA775B900099C7F /* SwiftDataPlayGroundUITestsLaunchTests.swift */; };
 		0C6D7BD32AA8AFEB00741441 /* FolderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */; };
+		0C6D7BD62AA97B9A00741441 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D7BD52AA97B9A00741441 /* DateExtension.swift */; };
 		0CBB51612AA8274F0096D3D8 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB51602AA8274F0096D3D8 /* ItemList.swift */; };
 		0CBB51632AA82A200096D3D8 /* BasketDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB51622AA82A200096D3D8 /* BasketDetail.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		0C4BA6D62AA775B900099C7F /* SwiftDataPlayGroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPlayGroundUITests.swift; sourceTree = "<group>"; };
 		0C4BA6D82AA775B900099C7F /* SwiftDataPlayGroundUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPlayGroundUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FolderListView.swift; path = "Basket&Items/FolderListView.swift"; sourceTree = "<group>"; };
+		0C6D7BD52AA97B9A00741441 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0CBB51602AA8274F0096D3D8 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		0CBB51622AA82A200096D3D8 /* BasketDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */,
+				0C6D7BD42AA97B8E00741441 /* Extension */,
 				0C4BA6B82AA775B700099C7F /* SwiftDataPlayGroundApp.swift */,
 				0C4BA6BC2AA775B700099C7F /* Model.swift */,
 				0C6D7BD12AA8AFBC00741441 /* Basket&Items */,
@@ -147,6 +150,14 @@
 				0CBB51602AA8274F0096D3D8 /* ItemList.swift */,
 			);
 			path = "Basket&Items";
+			sourceTree = "<group>";
+		};
+		0C6D7BD42AA97B8E00741441 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0C6D7BD52AA97B9A00741441 /* DateExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6D7BD32AA8AFEB00741441 /* FolderListView.swift in Sources */,
+				0C6D7BD62AA97B9A00741441 /* DateExtension.swift in Sources */,
 				0CBB51612AA8274F0096D3D8 /* ItemList.swift in Sources */,
 				0C18B1012AA7E74F0078CFBA /* BasketList.swift in Sources */,
 				0C4BA6BD2AA775B700099C7F /* Model.swift in Sources */,

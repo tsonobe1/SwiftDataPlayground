@@ -14,27 +14,23 @@ struct FolderListView: View {
              sort: [SortDescriptor(\.createdData)] )
     var noParentFolders: [Folder]
     
-    @Query var Folders: [Folder]
-    
-    
-    
-    
-    
     var body: some View {
-        let _ = print(noParentFolders)
-        let _ = print(Folders)
         NavigationStack{
-            VStack{
-                List {
+            VStack(alignment: .leading){
+                ScrollView {
                     ForEach(noParentFolders){ folder in
                         NavigationLink {
                             FolderDetail(folder: folder)
                         } label: {
-                            Text(folder.name)
+                            HStack{
+                                Image(systemName: "folder")
+                                Text(folder.name)
+                            }
+                            .foregroundStyle(.blue.gradient)
+                            .frame(maxWidth: .infinity)
+                            .border(.blue)
                         }
-                        
                     }
-                    
                 }
                 Button("add"){
                     let new = Folder(id: UUID(), name: "New", createdData: Date())
@@ -42,8 +38,6 @@ struct FolderListView: View {
                 }
                 Button("All Delete"){
                     try?context.delete(model: Folder.self, includeSubclasses: false)
-                    
-                    
                 }
             }
             .navigationTitle("Folders")
@@ -52,10 +46,35 @@ struct FolderListView: View {
     }
 }
 
-#Preview {
-    FolderListView()
-}
 
+
+
+struct ParentPathView: View {
+    let folder: Folder
+    
+    var body: some View {
+        Text(generateParentPath(for: folder))
+            .font(.footnote)
+            .foregroundStyle(.secondary)
+            .bold()
+    }
+    
+    func generateParentPath(for folder: Folder) -> String {
+        var path = ""
+        var currentFolder: Folder? = folder.parent  // 最初に親に移動
+        while let folder = currentFolder {
+            if !path.isEmpty {
+                path = " > " + path
+            }
+            path = folder.name + path
+            currentFolder = folder.parent
+        }
+        if !path.isEmpty {
+            path += " > "
+        }
+        return path
+    }
+}
 
 struct FolderDetail: View {
     @Environment(\.modelContext) private var context
@@ -76,42 +95,131 @@ struct FolderDetail: View {
         }
     }
     
-    
-    
     var body: some View {
-        VStack{
-            ForEach(depthCounts.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
-                Text("Depth: \(key), Count: \(value)")
+        VStack(alignment: .leading){
+            // MARK: ParentPath
+            if folder.parent != nil {
+                ScrollView(.horizontal, showsIndicators: false){
+                    ParentPathView(folder: folder)
+                }
             }
-            List{
-                ForEach(folder.children){ child in
-                    NavigationLink {
-                        FolderDetail(folder: child)
-                    } label: {
-                        Text(child.name)
+            
+            // MARK: Folder Name
+            HStack(alignment: .lastTextBaseline){
+                Text(folder.name)
+                    .font(.title)
+                Text(folder.createdData, style: .date)
+            }
+            
+            VStack(alignment: .leading){
+                // Depth
+                ForEach(depthCounts.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
+                    Text("Depth: \(key), Count: \(value)")
+                        .font(.caption)
+                }
+                
+                // MARK: Children
+                
+                DisclosureGroup {
+                    ScrollView{
+                        ForEach(folder.children){ child in
+                            NavigationLink {
+                                FolderDetail(folder: child)
+                            } label: {
+                                HStack{
+                                    Image(systemName: "folder")
+                                    Text(child.name)
+                                }
+                            }
+                        }
+                        Button("add"){
+                            let new = Folder(id: UUID(), name: "New child", createdData: Date())
+                            new.parent = folder
+                            folder.children.append(new)
+                        }
                     }
+                } label: {
+                    Text("SubGoals")
                 }
-                Button("add"){
-                    let new = Folder(id: UUID(), name: "New child", createdData: Date())
-                    new.parent = folder
-//                    try? context.save()
-                    
-                    folder.children.append(new)
-                }
+
+                
+                
+                
+                
+                
             }
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+struct FolderNest: View {
+    @Environment(\.modelContext) private var context
+    @Query(filter: #Predicate<Folder> { $0.parent == nil },
+             sort: [SortDescriptor(\.createdData)] )
+    var noParentFolders: [Folder]
+
     
+    var body: some View {
+        NavigationStack{
+            VStack{
+                ScrollView {
+                    ForEach(noParentFolders){ folder in
+                        FolderRow(folder: folder)
+                    }
+                }
+                Button("add"){
+                    let new = Folder(id: UUID(), name: "New", createdData: Date())
+                    context.insert(new)
+                }
+                Button("All Delete"){
+                    try?context.delete(model: Folder.self, includeSubclasses: false)
+                }
+            }
+            .navigationTitle("Folders")
+            .navigationBarTitleDisplayMode(.large)
+        }
+    }
+}
 
-    func countNodes(root: Folder?, depth: Int = 0, counts: inout [Int: Int]) {
-        guard let root = root else { return }
-        
-        // この深さでのノード数を1つ増やす
-        counts[depth, default: 0] += 1
+struct FolderRow: View {
+    let folder: Folder
+    @State private var isExpanded: Bool = false
 
-        // 子ノードに対しても同様の処理を行う
-        for child in root.children {
-            countNodes(root: child, depth: depth + 1, counts: &counts)
+    
+    var body: some View {
+        VStack{
+            HStack{
+                Text(folder.name)
+                    .frame(maxWidth: .infinity)
+                    .border(.blue)
+                
+                if !folder.children.isEmpty {
+                    Image(systemName: isExpanded ? "chevron.up.circle.fill" : "chevron.down.circle.fill")
+                        .foregroundColor(.orange)
+                        .font(.system(size: 20))
+                        .padding(.trailing, 20)
+                        .onTapGesture {
+                            isExpanded.toggle()
+                        }
+                }
+            }
+            if isExpanded {
+                ForEach(folder.children) { child in
+                    FolderRow(folder: child)
+                        .padding(.leading)
+                }
+            }
         }
     }
 }
