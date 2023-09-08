@@ -19,6 +19,7 @@
 		0C6D7BD62AA97B9A00741441 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D7BD52AA97B9A00741441 /* DateExtension.swift */; };
 		0CBB51612AA8274F0096D3D8 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB51602AA8274F0096D3D8 /* ItemList.swift */; };
 		0CBB51632AA82A200096D3D8 /* BasketDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB51622AA82A200096D3D8 /* BasketDetail.swift */; };
+		0CDAA09F2AAB47A200456A5A /* ThreadLinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDAA09E2AAB47A200456A5A /* ThreadLinesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0C6D7BD52AA97B9A00741441 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0CBB51602AA8274F0096D3D8 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		0CBB51622AA82A200096D3D8 /* BasketDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketDetail.swift; sourceTree = "<group>"; };
+		0CDAA09E2AAB47A200456A5A /* ThreadLinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadLinesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		0C4BA6AC2AA775B700099C7F = {
 			isa = PBXGroup;
 			children = (
+				0CDAA09E2AAB47A200456A5A /* ThreadLinesView.swift */,
 				0C4BA6B72AA775B700099C7F /* SwiftDataPlayGround */,
 				0C4BA6CB2AA775B900099C7F /* SwiftDataPlayGroundTests */,
 				0C4BA6D52AA775B900099C7F /* SwiftDataPlayGroundUITests */,
@@ -296,6 +299,7 @@
 				0C18B1012AA7E74F0078CFBA /* BasketList.swift in Sources */,
 				0C4BA6BD2AA775B700099C7F /* Model.swift in Sources */,
 				0CBB51632AA82A200096D3D8 /* BasketDetail.swift in Sources */,
+				0CDAA09F2AAB47A200456A5A /* ThreadLinesView.swift in Sources */,
 				0C4BA6B92AA775B700099C7F /* SwiftDataPlayGroundApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
