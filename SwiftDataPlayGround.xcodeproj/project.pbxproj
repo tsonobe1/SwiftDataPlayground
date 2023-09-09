@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C18B1012AA7E74F0078CFBA /* BasketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18B1002AA7E74F0078CFBA /* BasketList.swift */; };
 		0C4BA6B92AA775B700099C7F /* SwiftDataPlayGroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BA6B82AA775B700099C7F /* SwiftDataPlayGroundApp.swift */; };
-		0C4BA6BD2AA775B700099C7F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BA6BC2AA775B700099C7F /* Model.swift */; };
+		0C4BA6BD2AA775B700099C7F /* BasketItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BA6BC2AA775B700099C7F /* BasketItemModel.swift */; };
 		0C4BA6BF2AA775B900099C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C4BA6BE2AA775B900099C7F /* Assets.xcassets */; };
 		0C4BA6C32AA775B900099C7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C4BA6C22AA775B900099C7F /* Preview Assets.xcassets */; };
 		0C4BA6CD2AA775B900099C7F /* SwiftDataPlayGroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BA6CC2AA775B900099C7F /* SwiftDataPlayGroundTests.swift */; };
@@ -19,7 +19,7 @@
 		0C6D7BD62AA97B9A00741441 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D7BD52AA97B9A00741441 /* DateExtension.swift */; };
 		0CBB51612AA8274F0096D3D8 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB51602AA8274F0096D3D8 /* ItemList.swift */; };
 		0CBB51632AA82A200096D3D8 /* BasketDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB51622AA82A200096D3D8 /* BasketDetail.swift */; };
-		0CDAA09F2AAB47A200456A5A /* ThreadLinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDAA09E2AAB47A200456A5A /* ThreadLinesView.swift */; };
+		0CDAA0A22AAC056400456A5A /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDAA0A12AAC056400456A5A /* FolderModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 		0C18B1002AA7E74F0078CFBA /* BasketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketList.swift; sourceTree = "<group>"; };
 		0C4BA6B52AA775B700099C7F /* SwiftDataPlayGround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDataPlayGround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C4BA6B82AA775B700099C7F /* SwiftDataPlayGroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPlayGroundApp.swift; sourceTree = "<group>"; };
-		0C4BA6BC2AA775B700099C7F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0C4BA6BC2AA775B700099C7F /* BasketItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItemModel.swift; sourceTree = "<group>"; };
 		0C4BA6BE2AA775B900099C7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C4BA6C02AA775B900099C7F /* SwiftDataPlayGround.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftDataPlayGround.entitlements; sourceTree = "<group>"; };
 		0C4BA6C22AA775B900099C7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -52,11 +52,11 @@
 		0C4BA6D22AA775B900099C7F /* SwiftDataPlayGroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDataPlayGroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C4BA6D62AA775B900099C7F /* SwiftDataPlayGroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPlayGroundUITests.swift; sourceTree = "<group>"; };
 		0C4BA6D82AA775B900099C7F /* SwiftDataPlayGroundUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPlayGroundUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FolderListView.swift; path = "Basket&Items/FolderListView.swift"; sourceTree = "<group>"; };
+		0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListView.swift; sourceTree = "<group>"; };
 		0C6D7BD52AA97B9A00741441 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0CBB51602AA8274F0096D3D8 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		0CBB51622AA82A200096D3D8 /* BasketDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketDetail.swift; sourceTree = "<group>"; };
-		0CDAA09E2AAB47A200456A5A /* ThreadLinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadLinesView.swift; sourceTree = "<group>"; };
+		0CDAA0A12AAC056400456A5A /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,6 @@
 		0C4BA6AC2AA775B700099C7F = {
 			isa = PBXGroup;
 			children = (
-				0CDAA09E2AAB47A200456A5A /* ThreadLinesView.swift */,
 				0C4BA6B72AA775B700099C7F /* SwiftDataPlayGround */,
 				0C4BA6CB2AA775B900099C7F /* SwiftDataPlayGroundTests */,
 				0C4BA6D52AA775B900099C7F /* SwiftDataPlayGroundUITests */,
@@ -108,11 +107,10 @@
 		0C4BA6B72AA775B700099C7F /* SwiftDataPlayGround */ = {
 			isa = PBXGroup;
 			children = (
-				0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */,
+				0C6D7BD12AA8AFBC00741441 /* Basket&Items */,
+				0CDAA0A02AAC054000456A5A /* Folder */,
 				0C6D7BD42AA97B8E00741441 /* Extension */,
 				0C4BA6B82AA775B700099C7F /* SwiftDataPlayGroundApp.swift */,
-				0C4BA6BC2AA775B700099C7F /* Model.swift */,
-				0C6D7BD12AA8AFBC00741441 /* Basket&Items */,
 				0C4BA6C02AA775B900099C7F /* SwiftDataPlayGround.entitlements */,
 				0C4BA6BE2AA775B900099C7F /* Assets.xcassets */,
 				0C4BA6C12AA775B900099C7F /* Preview Content */,
@@ -151,6 +149,7 @@
 				0C18B1002AA7E74F0078CFBA /* BasketList.swift */,
 				0CBB51622AA82A200096D3D8 /* BasketDetail.swift */,
 				0CBB51602AA8274F0096D3D8 /* ItemList.swift */,
+				0C4BA6BC2AA775B700099C7F /* BasketItemModel.swift */,
 			);
 			path = "Basket&Items";
 			sourceTree = "<group>";
@@ -161,6 +160,15 @@
 				0C6D7BD52AA97B9A00741441 /* DateExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		0CDAA0A02AAC054000456A5A /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				0C6D7BD22AA8AFEB00741441 /* FolderListView.swift */,
+				0CDAA0A12AAC056400456A5A /* FolderModel.swift */,
+			);
+			path = Folder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,12 +302,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6D7BD32AA8AFEB00741441 /* FolderListView.swift in Sources */,
+				0CDAA0A22AAC056400456A5A /* FolderModel.swift in Sources */,
 				0C6D7BD62AA97B9A00741441 /* DateExtension.swift in Sources */,
 				0CBB51612AA8274F0096D3D8 /* ItemList.swift in Sources */,
 				0C18B1012AA7E74F0078CFBA /* BasketList.swift in Sources */,
-				0C4BA6BD2AA775B700099C7F /* Model.swift in Sources */,
+				0C4BA6BD2AA775B700099C7F /* BasketItemModel.swift in Sources */,
 				0CBB51632AA82A200096D3D8 /* BasketDetail.swift in Sources */,
-				0CDAA09F2AAB47A200456A5A /* ThreadLinesView.swift in Sources */,
 				0C4BA6B92AA775B700099C7F /* SwiftDataPlayGroundApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

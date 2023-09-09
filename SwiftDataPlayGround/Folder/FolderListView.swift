@@ -80,14 +80,12 @@ struct FolderDetail: View {
     @Environment(\.modelContext) private var context
     let folder: Folder
     
-    
     // 各深さでのフォルダ数を計算する
     var depthCounts: [Int: Int] {
         var counts: [Int: Int] = [:]
         countDepth(for: folder, currentDepth: 0, counts: &counts)
         return counts
     }
-    
     // 再帰的に深さとその階層でのフォルダ数を計算
     private func countDepth(for folder: Folder, currentDepth: Int, counts: inout [Int: Int]) {
         counts[currentDepth, default: 0] += 1
@@ -110,7 +108,7 @@ struct FolderDetail: View {
                     .font(.title)
                 Text(folder.createdData, style: .date)
             }
-            VStack(alignment: .leading, spacing: 0){
+            VStack(alignment: .leading, spacing: 10){
                 // Depth
                 ForEach(depthCounts.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
                     Text("Depth: \(key), Count: \(value)")
@@ -120,8 +118,8 @@ struct FolderDetail: View {
                 ScrollView{
                     ForEach(folder.children){ child in
                         ChildRow(child: child)
-                            .padding(.leading)
                     }
+                    Spacer(minLength: 10)
                 }
                 Button("add"){
                     let new = Folder(id: UUID(), name: "New child", createdData: Date())
@@ -130,6 +128,7 @@ struct FolderDetail: View {
                 }
             }
         }
+        .padding()
     }
 }
 
@@ -138,7 +137,7 @@ struct FolderDetail: View {
 struct ChildRow: View {
     let child: Folder
     @State private var isExpanded: Bool = false
-
+    
     var body: some View {
         VStack(alignment: .leading,  spacing: 0){
             VStack(alignment: .leading, spacing: 0){
@@ -147,42 +146,63 @@ struct ChildRow: View {
                         FolderDetail(folder: child)
                     } label: {
                         Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+                            .font(.callout)
                             .lineLimit(2)
                             .multilineTextAlignment(.leading)
                             .padding(10)
                     }
                     
                     if !child.children.isEmpty {
-                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        Image(systemName: "chevron.right")
+                            .rotationEffect(.degrees(isExpanded ? 90 : 0))
                             .font(.system(size: 15))
                             .onTapGesture {
-                                isExpanded.toggle()
+                                withAnimation {
+                                    isExpanded.toggle()
+                                }
+                                
                             }
                             .padding(.trailing)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 2)
-                )
-            }
-            
-            Rectangle()
-                .frame(width: 3, height: 15)
-                .opacity(0.5)
-                .padding(.leading)
-            
-            if isExpanded {
-                ForEach(child.children) { child in
-                    ChildRow(child: child)
-                        .padding(.leading)
+                .background{
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.regularMaterial)
                 }
             }
             
             
+            
+            
+            Rectangle()
+                .frame(width: 3)
+                .opacity(child.children.isEmpty || isExpanded == false ? 0 : 0.8)
+                .foregroundColor(.gray)
+                .padding(.leading)
+                .offset(x: 5)
+            
+            VStack(spacing: 0){
+                if isExpanded {
+                    ForEach(child.children) { child in
+                        ChildRow(child: child)
+                            .padding(.leading)
+                    }
+                }
+            }
         }
-        
+        .background(
+            Rectangle()
+                .fill(.gray)
+                .opacity(child.parent?.children.last == child ? 0 : 0.8)
+                .mask(    // << here !!
+                    HStack {
+                        Rectangle()
+                            .frame(width: 3)
+                            .offset(x: 5, y: 10)
+                        Spacer()
+                    })
+        )
     }
 }
 
@@ -203,21 +223,36 @@ struct FolderNest: View {
     var body: some View {
         NavigationStack{
             VStack{
-                ScrollView {
-                    ForEach(noParentFolders){ folder in
-                        FolderRow(folder: folder)
+                VStack{
+                    ScrollView {
+                        ForEach(noParentFolders){ folder in
+                            FolderRow(folder: folder)
+                        }
+                    }
+                    Button("add"){
+                        let new = Folder(id: UUID(), name: "New", createdData: Date())
+                        context.insert(new)
+                    }
+                    Button("All Delete"){
+                        try?context.delete(model: Folder.self, includeSubclasses: false)
                     }
                 }
-                Button("add"){
-                    let new = Folder(id: UUID(), name: "New", createdData: Date())
-                    context.insert(new)
-                }
-                Button("All Delete"){
-                    try?context.delete(model: Folder.self, includeSubclasses: false)
-                }
+                .navigationTitle("Folders")
+                .navigationBarTitleDisplayMode(.large)
             }
-            .navigationTitle("Folders")
-            .navigationBarTitleDisplayMode(.large)
+            
+            VStack{
+                Text("TESTSETSETSET")
+                HStack{
+                    Rectangle().frame(width: 5)
+                    VStack{
+                        Text("TESTSETSETSET")
+                        Text("TESTSETSETSET")
+                        Text("TESTSETSETSET")
+                    }
+                }
+                Text("TESTSETSETSET")
+            }
         }
     }
 }
